@@ -1,6 +1,7 @@
 
-Version 1.19  2017-01-10
+Version 1.19  2017-03-14
  * change INT64_PRINTF_FORMAT to PRId64
+ * ignore range->end >= file_size
 
 Version 1.17  2014-11-22
  * change include path of fastcommon and fastdfs

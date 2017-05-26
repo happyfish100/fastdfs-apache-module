@@ -1,5 +1,5 @@
 Name: fastdfs-apache-module
-Version: 1.0.0
+Version: 1.0.20
 Release: 1%{?dist}
 Summary: The apache module of fastdfs
 License: GPL

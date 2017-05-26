@@ -97,10 +97,10 @@ void fdfs_output_headers(void *arg, struct fdfs_http_response *pResponse)
 			pResponse->last_modified_buff);
 
 	apr_table_setn(r->headers_out, "Accept-Ranges", "bytes");
-	if (pResponse->content_range_len > 0)
+	if (pResponse->content_range_count == 1)
 	{
 		apr_table_setn(r->headers_out, "Content-Range", \
-				pResponse->content_range);
+				pResponse->content_ranges[0].content);
 	}
 }
 
@@ -161,7 +161,7 @@ static int fastdfs_handler(request_rec *r)
 	range = apr_table_get(r->headers_in, "Range");
 	if (range != NULL)
 	{
-		if (fdfs_parse_range(range, &(context.range)) != 0)
+		if (fdfs_parse_ranges(range, &context) != 0)
 		{
 			logError("file: "__FILE__", line: %d, " \
 				"bad request, invalid range: %s", \
